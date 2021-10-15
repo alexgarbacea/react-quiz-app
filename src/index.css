@@ -11,3 +11,69 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  text-align: center;
+}
+
+.box {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: auto;
+  height: 50%;
+  width: 50%;
+  padding: 10px 50px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.wrapper {
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.question-title {
+  user-select: none;
+}
+
+.question {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin:auto;
+  width: 70%;
+  padding: 10px;
+  margin-block: 15px;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s;
+}
+
+.question:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.52);
+  width: 72%;
+}
+
+.btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.show-btn{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.show-answears {
+  user-select: none;
+  font-weight: bold;
+  margin-block: 15px;
+}
