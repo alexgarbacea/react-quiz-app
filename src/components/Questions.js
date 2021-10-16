@@ -2,7 +2,7 @@ import { shuffleAnswers as opt,  questions } from "../question_options"
 
 import { useState } from "react"
 
-const Questions = () => {
+const Questions = ({end}) => {
 
     const [currentQuestion, setCurrentQuestion] = useState(1);
     const [score, setScore] = useState(0);
@@ -15,7 +15,11 @@ const Questions = () => {
         if(isCorrect) setScore(score + (100/questions.length));//right answear
 
         if(currentQuestion < questions.length) setCurrentQuestion(currentQuestion + 1)//next question
-        else setFinish(true)//finish quiz
+        else {//finish quiz
+            end(false)
+            setFinish(true)
+            setCurrentQuestion(currentQuestion + 1)
+        }
     }
 
     return (
@@ -25,7 +29,14 @@ const Questions = () => {
             :
             <h2>Quiz completed</h2>
             }
-            <hr />
+
+            <div className="progress-bar-bg">
+                <div className="progress-bar" 
+                style={{width:`${Math.floor(((currentQuestion-1)*100)/questions.length)}%`}}>
+                    {currentQuestion > 1 && `${Math.floor(((currentQuestion - 1) * 100) / questions.length)}%`}
+                </div>
+            </div>
+
             {!finish ?
             <h3 className="question-title">{questions[currentQuestion-1].title}</h3>
             :
@@ -35,10 +46,10 @@ const Questions = () => {
                 <div className="btn" onClick={() => window.location.reload()}>Retake</div>
                 <hr />
                 {!showAnswears ? 
-                    <span className="show-btn" onClick={() => setShowAnswears(true)}>show my answears</span>
+                    <span className="show-btn" onClick={() => setShowAnswears(true)}>show my answers</span>
                 :
                     <div>
-                        <span className="show-btn" onClick={() => setShowAnswears(false)}>hide my answears</span>
+                        <span className="show-btn" onClick={() => setShowAnswears(false)}>hide my answers</span>
                         {answears.map((ans, i) => (
                             <div key={i} className="show-answears" style={{color: ans.isCorrect ? 'green' : 'red'}}>
                                 {i+1}. {ans.text}
